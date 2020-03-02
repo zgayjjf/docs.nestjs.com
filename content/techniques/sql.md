@@ -510,6 +510,7 @@ export class AppModule {}
 
 At this point, you have `User` and `Album` entities registered with their own connection. With this setup, you have to tell the `TypeOrmModule.forFeature()` method and the `@InjectRepository()` decorator which connection should be used. If you do not pass any connection name, the `default` connection is used.
 
+For `TypeOrmModule.forFeatuer()`:
 ```typescript
 @Module({
   imports: [
@@ -518,6 +519,12 @@ At this point, you have `User` and `Album` entities registered with their own co
   ],
 })
 export class AppModule {}
+```
+
+For `@InjectRepository()`:
+```typescript
+@InjectRepository(Person, 'albumsConnection') 
+private readonly album: Repository<Album>,
 ```
 
 You can also inject the `Connection` or `EntityManager` for a given connection:
